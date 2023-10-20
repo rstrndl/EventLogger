@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.44">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{12A98AE4-99C0-44E7-9853-A560C2842FF8}" PersistentType="true">AlarmEventClass</Name>
+			<DisplayName TxtId=""><![CDATA[Alarm]]></DisplayName>
+			<EventId>
+				<Name Id="1">EmStop</Name>
+				<DisplayName TxtId=""><![CDATA[EmStopPressed]]></DisplayName>
+				<Severity>Info</Severity>
+				<Properties>
+					<Property>
+						<Name>Severity</Name>
+						<Value>HHH/LLL</Value>
+					</Property>
+				</Properties>
+			</EventId>
+			<EventId>
+				<Name Id="2">Fire</Name>
+				<DisplayName TxtId=""><![CDATA[Fire Detected]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{975C1538-E0DB-4D66-B831-CE1C0931E501}"/>
+				<Hide GUID="{A33CD22E-FCCA-4407-A15A-43E345A65DB2}"/>
+				<Hide GUID="{625CCC1E-5B68-455A-BF77-BF376826455C}"/>
+				<Hide GUID="{826FE611-584B-4BD2-B82F-4FACF1EB3807}"/>
+				<Hide GUID="{3D5944D6-8B94-432A-9D81-BB74892AC927}"/>
+				<Hide GUID="{A75D440D-2088-4A0E-B609-5A83CF5F6FBD}"/>
+				<Hide GUID="{212FBAAD-86F5-481D-8E9F-0993654C079B}"/>
+				<Hide GUID="{429A6088-0743-4E05-B6AA-C7244A8819B6}"/>
+				<Hide GUID="{0B93FDB8-0C45-49AE-91BD-C573B04BFFE3}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{791BA000-CA4F-405D-8B57-B2DCF1B4D6F0}" PersistentType="true">AlarmEventClass</Name>
+			<DisplayName TxtId=""><![CDATA[Alarm]]></DisplayName>
+			<EventId>
+				<Name Id="1">EmStop</Name>
+				<DisplayName TxtId=""><![CDATA[EmStopPressed]]></DisplayName>
+				<Severity>Info</Severity>
+				<Properties>
+					<Property>
+						<Name>NewType</Name>
+					</Property>
+				</Properties>
+			</EventId>
+			<EventId>
+				<Name Id="2">Fire</Name>
+				<DisplayName TxtId=""><![CDATA[Fire Detected]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="3">General_alarm</Name>
+				<DisplayName TxtId=""><![CDATA[General alarm]]></DisplayName>
+				<Severity>Critical</Severity>
+			</EventId>
+			<Properties>
+				<Property>
+					<Name>NewType</Name>
+				</Property>
+			</Properties>
+			<Hides>
+				<Hide GUID="{975C1538-E0DB-4D66-B831-CE1C0931E501}"/>
+				<Hide GUID="{A33CD22E-FCCA-4407-A15A-43E345A65DB2}"/>
+				<Hide GUID="{625CCC1E-5B68-455A-BF77-BF376826455C}"/>
+				<Hide GUID="{826FE611-584B-4BD2-B82F-4FACF1EB3807}"/>
+				<Hide GUID="{3D5944D6-8B94-432A-9D81-BB74892AC927}"/>
+				<Hide GUID="{A75D440D-2088-4A0E-B609-5A83CF5F6FBD}"/>
+				<Hide GUID="{212FBAAD-86F5-481D-8E9F-0993654C079B}"/>
+				<Hide GUID="{429A6088-0743-4E05-B6AA-C7244A8819B6}"/>
+				<Hide GUID="{0B93FDB8-0C45-49AE-91BD-C573B04BFFE3}"/>
+				<Hide GUID="{12A98AE4-99C0-44E7-9853-A560C2842FF8}"/>
+				<Hide GUID="{FB51A1BF-F67B-4A3A-AB88-36D59C00D24B}"/>
+				<Hide GUID="{CF05527B-A8C2-482C-8A4E-EC2BA32AEF9E}"/>
+				<Hide GUID="{2A933C48-6FBE-4187-9C04-CBA2A3ED68D8}"/>
+				<Hide GUID="{74E575DD-18ED-4830-9A18-DF047E975369}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{4916BF64-61DD-47FF-9189-0329D0E5F422}" PersistentType="true">TYP_ALARMS</Name>
+			<BitSize>2080</BitSize>
+			<SubItem>
+				<Name>AlarmName</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>AlarmID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>672</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SourceName</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>704</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>SourceID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>1376</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Message</Name>
+				<Type GUID="{18071995-0000-0000-0000-000100000050}">STRING(80)</Type>
+				<BitSize>648</BitSize>
+				<BitOffs>1408</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>isActive</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>2056</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>isConfirmed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>2064</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{259418FF-9939-39C2-1A80-D21571C75714}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{D00534F2-699F-4B9F-8F51-DF48CF04BDE2}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Licenses>
+				<Target>
+					<ManualSelect>{BDCC0070-42D5-49AE-ABF1-1D4434813D60}</ManualSelect>
+					<ManualSelect>{2752D285-16AD-4E89-AE6C-80E72784D264}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{99C32D1D-4383-4050-B11A-D42F50AF1E4E}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC\PLC.tmc" TmcHash="{65A4EB3E-7DCA-84D6-EA7F-7F4787981F65}">
+					<Name>PLC Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+	</Project>
+</TcSmProject>

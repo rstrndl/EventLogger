@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ALARM" Id="{ab473ddc-b744-4d35-8468-395ce076faea}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ALARM EXTENDS FB_TcAlarm
+VAR_INPUT
+	eventEntry : TcEventEntry;
+	bEvt : BOOL;
+	bConfirm : BOOL;
+	nUserEventID : UDINT;
+	nUserSourceID : UDINT;
+	sMessage : STRING;
+	sSourceMessage : STRING;
+END_VAR
+VAR_IN_OUT
+	arrAlarms : ARRAY[*] OF TYP_ALARMS;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bInit : BOOL := TRUE;
+	bMem : BOOL;
+	fbMsg : FB_TcMessage;
+	fbSourceInformation : FB_TcSourceInfo;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//INITIALISING THE ALARM WHEN THE RAISING OF THE ALARM IS REQUESTED
+IF bEvt AND NOT bMem (*AND SUPER^.eConfirmationState <> TcEventConfirmationState.WaitForConfirmation*) THEN
+	IF bInit THEN
+		fbSourceInformation.Clear();
+		fbSourceInformation.sName := sSourceMessage;
+		fbSourceInformation.nId := nUserSourceID;
+		eventEntry.nEventId := nUserEventID;
+		SUPER^.CreateEx(eventEntry, TRUE, ipSourceInfo := fbSourceInformation);
+		SUPER^.ipArguments.Clear().AddString(sMessage);
+		bInit := FALSE;
+	END_IF
+END_IF
+
+//AFTER INITIALISING, RAISE THE ALARM
+IF NOT bInit THEN
+	SUPER^.Raise(0);
+	bInit := TRUE;
+END_IF
+
+//CLEARING THE ALARM
+IF bMem AND NOT bEvt THEN
+	SUPER^.Clear(0, FALSE);	
+END_IF
+
+//CONFIRMING THE ALARM
+IF bConfirm THEN
+	SUPER^.Confirm(0);
+END_IF
+
+bMem := bEvt;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ALARM">
+      <LineId Id="332" Count="0" />
+      <LineId Id="116" Count="5" />
+      <LineId Id="123" Count="2" />
+      <LineId Id="129" Count="1" />
+      <LineId Id="333" Count="0" />
+      <LineId Id="131" Count="4" />
+      <LineId Id="337" Count="0" />
+      <LineId Id="136" Count="3" />
+      <LineId Id="338" Count="0" />
+      <LineId Id="140" Count="3" />
+      <LineId Id="354" Count="0" />
+      <LineId Id="37" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

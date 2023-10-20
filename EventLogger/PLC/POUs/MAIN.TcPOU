@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{64168481-bac7-4fe4-9c67-96c0d4acd960}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	GeneralAlarms : ARRAY[0..2] OF TYP_ALARM_INTERFACE :=
+	[(nEventID:=3, nSourceID:=101, sMessage:='MESSAGE 1', sSourceMessage:='SOURCE 1'),
+	(nEventID:=3, nSourceID:=202, sMessage:='MESSAGE 2', sSourceMessage:='SOURCE 2'),
+	(nEventID:=3, nSourceID:=303, sMessage:='MESSAGE 3', sSourceMessage:='SOURCE 3')];
+	
+	fbGeneralAlarms : ARRAY [0..2] OF FB_ALARM;
+	fbListener : FB_ListenerTest;
+	bResetArray : BOOL;
+	i: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbListener(arrAlarms:=GVL.arrAlarms);
+
+FOR i:=0 TO 2 BY 1 DO
+	fbGeneralAlarms[i](eventEntry:=TC_EVENTS.AlarmEventClass.General_alarm, 
+			bEvt := GeneralAlarms[i].bActivate, 
+			bConfirm := GeneralAlarms[i].bConfirm,
+			sMessage := GeneralAlarms[i].sMessage,
+			nUserEventID := GeneralAlarms[i].nEventID,
+			nUserSourceID := GeneralAlarms[i].nSourceID,
+			sSourceMessage := GeneralAlarms[i].sSourceMessage,
+			arrAlarms := GVL.arrAlarms);
+END_FOR	
+		
+IF bResetArray THEN
+	memset(ADR(GVL.arrAlarms),0,SIZEOF(GVL.arrAlarms));
+	bResetArray := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="139" Count="0" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="174" Count="7" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="120" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
